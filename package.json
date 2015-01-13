@@ -4,9 +4,12 @@
   "author": "Juho Vepsalainen <bebraw@gmail.com>",
   "version": "0.0.0",
   "dependencies": {
+    "annofp": "^0.3.0",
+    "annogenerate": "^0.8.0",
+    "annomath": "^0.3.3",
+    "change-case": "^2.2.0"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "https://github.com/bebraw/schema2object.git"
@@ -15,7 +18,11 @@
   "bugs": {
     "url": "https://github.com/bebraw/schema2object/issues"
   },
-  "keywords": [],
+  "main": "./index.js",
+  "keywords": [
+    "json-schema",
+    "schema"
+  ],
   "licenses": [
     {
       "type": "MIT",
