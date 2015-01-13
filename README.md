@@ -1,5 +1,5 @@
 [![build status](https://secure.travis-ci.org/bebraw/schema2object.png)](http://travis-ci.org/bebraw/schema2object)
-# schema2object - Utilities to help convert JSON Schemas to Objects
+# schema2object - Generate random objects based on JSON Schema
 
 Usage:
 

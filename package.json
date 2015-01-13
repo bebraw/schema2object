@@ -1,6 +1,6 @@
 {
   "name": "schema2object",
-  "description": "Utilities to help convert JSON Schemas to Objects",
+  "description": "Generate random objects based on JSON Schema",
   "author": "Juho Vepsalainen <bebraw@gmail.com>",
   "version": "0.0.0",
   "dependencies": {
