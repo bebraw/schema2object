@@ -28,5 +28,5 @@ function getObject(definitions, name) {
         properties = schema2object.getRequiredProperties(definition);
     }
 
-    return schema2object.properties2object(definitions, properties);
+    return schema2object.properties2object(properties, definitions);
 }

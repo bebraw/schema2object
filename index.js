@@ -19,12 +19,13 @@ exports.getRequiredProperties = function(definition) {
 };
 
 exports.properties2object = properties2object;
-function properties2object(definitions, properties) {
+function properties2object(properties, definitions) {
     if(!properties) {
         return console.trace('missing properties');
     }
 
-    properties = resolveRefs(definitions, properties);
+    definitions = definitions || {};
+    properties = resolveRefs(properties, definitions);
 
     return fp.map(function(k, v) {
         if(v.enum) {
@@ -57,7 +58,11 @@ function properties2object(definitions, properties) {
     }, properties);
 }
 
-function resolveRefs(definitions, properties) {
+function resolveRefs(properties, definitions) {
+    if(!definitions) {
+        return properties;
+    }
+
     return fp.map(function(k, v) {
         if(v.$ref) {
             var name = getReferenceName(v.$ref);

@@ -16,8 +16,9 @@ if(definition.required) {
     properties = schema2object.getRequiredProperties(definition);
 }
 
-// all definitions are passed so that $ref lookup can work properly
-var o = schema2object.properties2object(definitions, properties);
+// definitions can be passed so that $ref lookups work
+// in case your properties don't have any, you can skip it
+var o = schema2object.properties2object(properties, definitions);
 
 // you should have an object with random data now
 console.log(o);
