@@ -1,0 +1,25 @@
+{
+  "name": "schema2object",
+  "description": "Utilities to help convert JSON Schemas to Objects",
+  "author": "Juho Vepsalainen <bebraw@gmail.com>",
+  "version": "0.0.0",
+  "dependencies": {
+  },
+  "devDependencies": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bebraw/schema2object.git"
+  },
+  "homepage": "https://github.com/bebraw/schema2object",
+  "bugs": {
+    "url": "https://github.com/bebraw/schema2object/issues"
+  },
+  "keywords": [],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/bebraw/schema2object/blob/master/LICENSE"
+    }
+  ]
+}
