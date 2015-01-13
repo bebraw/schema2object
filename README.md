@@ -5,7 +5,7 @@ Usage:
 
 ```javascript
 var schema2object = require('schema2object');
-var definition = ...; // Object of JSON schemas (name -> schema)
+var definitions = ...; // Object of JSON schemas (name -> schema)
 var definition = ...; // JSON Schema
 
 
