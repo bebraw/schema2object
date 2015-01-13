@@ -1,0 +1,359 @@
+{
+  "Client": {
+    "required": [
+      "name",
+      "address",
+      "city",
+      "postalCode",
+      "phone",
+      "companyId",
+      "iban",
+      "bic",
+      "language"
+    ],
+    "properties": {
+      "id": {
+        "type": "integer",
+        "format": "int32",
+        "description": "Id of the invoice pending"
+      },
+      "name": {
+        "type": "string"
+      },
+      "address": {
+        "type": "string"
+      },
+      "city": {
+        "type": "string"
+      },
+      "postalCode": {
+        "type": "string"
+      },
+      "phone": {
+        "type": "string"
+      },
+      "companyId": {
+        "$ref": "#/definitions/Id"
+      },
+      "iban": {
+        "type": "string"
+      },
+      "bic": {
+        "type": "string"
+      },
+      "language": {
+        "type": "string",
+        "enum": [
+          "en-en",
+          "fi-fi"
+        ]
+      },
+      "createdAt": {
+        "type": "string",
+        "format": "date-time",
+        "description": "Day in which the invoice was created at",
+        "readOnly": true
+      },
+      "updatedAt": {
+        "type": "string",
+        "format": "date-time",
+        "description": "Day in which the invoice was updated",
+        "readOnly": true
+      }
+    }
+  },
+  "Error": {
+    "properties": {
+      "payload": {
+        "type": "object"
+      },
+      "message": {
+        "type": "string"
+      }
+    }
+  },
+  "Id": {
+    "type": "integer",
+    "format": "int32",
+    "description": "Id of the invoice pending"
+  },
+  "InvoiceItem": {
+    "properties": {
+      "description": {
+        "type": "string",
+        "description": "Description of the invoice item"
+      },
+      "cost": {
+        "type": "number",
+        "description": "Cost of the invoice item"
+      },
+      "vat": {
+        "default": 0,
+        "type": "number",
+        "description": "Vat of the invoice item"
+      }
+    }
+  },
+  "InvoicePending": {
+    "required": [
+      "sender",
+      "receiver",
+      "items",
+      "due",
+      "paymentDays"
+    ],
+    "properties": {
+      "id": {
+        "type": "integer",
+        "format": "int32",
+        "description": "Id of the invoice pending"
+      },
+      "invoiceId": {
+        "type": "number",
+        "description": "Unique invoice id generated internally by the backend",
+        "readOnly": true
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "WAITING_TO_BE_SENT",
+          "SENT",
+          "WAITING_PAYMENT",
+          "RECEIVED_PAYMENT"
+        ],
+        "readOnly": true,
+        "description": "Status of the invoice pending"
+      },
+      "sender": {
+        "$ref": "#/definitions/Id",
+        "description": "Sender of the invoice pending"
+      },
+      "receiver": {
+        "$ref": "#/definitions/Id",
+        "description": "Receiver of the invoice pending"
+      },
+      "items": {
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "$ref": "#/definitions/InvoiceItem"
+        },
+        "description": "Items of the invoice pending"
+      },
+      "due": {
+        "type": "string",
+        "format": "date",
+        "description": "Day in which the invoice is due"
+      },
+      "paymentDays": {
+        "type": "number",
+        "description": "Amount of days to pay the bill",
+        "default": 8
+      },
+      "createdAt": {
+        "type": "string",
+        "format": "date-time",
+        "description": "Day in which the invoice was created at",
+        "readOnly": true
+      },
+      "updatedAt": {
+        "type": "string",
+        "format": "date-time",
+        "description": "Day in which the invoice was updated",
+        "readOnly": true
+      }
+    }
+  },
+  "InvoiceSent": {
+    "required": [
+      "sender",
+      "receiver",
+      "items",
+      "due",
+      "paymentDays"
+    ],
+    "properties": {
+      "id": {
+        "type": "integer",
+        "format": "int32",
+        "description": "Id of the invoice pending"
+      },
+      "invoiceId": {
+        "type": "number",
+        "description": "Unique invoice id generated internally by the backend",
+        "readOnly": true
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "WAITING_TO_BE_SENT",
+          "SENT",
+          "WAITING_PAYMENT",
+          "RECEIVED_PAYMENT"
+        ],
+        "readOnly": true,
+        "description": "Status of the invoice sent"
+      },
+      "sender": {
+        "$ref": "#/definitions/Id",
+        "description": "Sender of the invoice sent"
+      },
+      "receiver": {
+        "$ref": "#/definitions/Id",
+        "description": "Receiver of the invoice sent"
+      },
+      "items": {
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "$ref": "#/definitions/InvoiceItem"
+        },
+        "description": "Items of the invoice sent"
+      },
+      "due": {
+        "type": "string",
+        "format": "date",
+        "description": "Day in which the invoice is due"
+      },
+      "paymentDays": {
+        "type": "number",
+        "description": "Amount of days to pay the bill",
+        "default": 8
+      },
+      "createdAt": {
+        "type": "string",
+        "format": "date-time",
+        "description": "Day in which the invoice was created at",
+        "readOnly": true
+      },
+      "updatedAt": {
+        "type": "string",
+        "format": "date-time",
+        "description": "Day in which the invoice was updated",
+        "readOnly": true
+      }
+    }
+  },
+  "InvoiceStatus": {
+    "type": "string",
+    "enum": [
+      "WAITING_TO_BE_SENT",
+      "SENT",
+      "WAITING_PAYMENT",
+      "RECEIVED_PAYMENT"
+    ]
+  },
+  "ProductGroup": {
+    "required": [
+      "name",
+      "description"
+    ],
+    "properties": {
+      "id": {
+        "type": "integer",
+        "format": "int32",
+        "description": "Id of the invoice pending"
+      },
+      "name": {
+        "type": "string",
+        "description": "Name of the product group"
+      },
+      "description": {
+        "type": "string",
+        "description": "Description of the product group"
+      },
+      "createdAt": {
+        "type": "string",
+        "format": "date-time",
+        "description": "Day in which the group was created at",
+        "readOnly": true
+      },
+      "updatedAt": {
+        "type": "string",
+        "format": "date-time",
+        "description": "Day in which the group was updated",
+        "readOnly": true
+      }
+    }
+  },
+  "Product": {
+    "required": [
+      "name",
+      "description",
+      "purchasePrice",
+      "sellingPrice",
+      "priceChanged",
+      "vat",
+      "group",
+      "inStock"
+    ],
+    "properties": {
+      "id": {
+        "type": "integer",
+        "format": "int32",
+        "description": "Id of the invoice pending"
+      },
+      "name": {
+        "type": "string",
+        "description": "Name of the product"
+      },
+      "description": {
+        "type": "string",
+        "description": "Description of the product"
+      },
+      "purchasePrice": {
+        "type": "number",
+        "description": "Purchase price of the product"
+      },
+      "sellingPrice": {
+        "type": "number",
+        "description": "Selling price of the product"
+      },
+      "priceChanged": {
+        "type": "string",
+        "format": "date-time",
+        "description": "Date when price of the product changed"
+      },
+      "vat": {
+        "type": "number",
+        "description": "VAT of the product"
+      },
+      "group": {
+        "$ref": "#/definitions/Id",
+        "description": "Group of the product"
+      },
+      "inStock": {
+        "type": "boolean",
+        "description": "Is the product in the stock"
+      },
+      "createdAt": {
+        "type": "string",
+        "format": "date-time",
+        "description": "Day in which the group was created at",
+        "readOnly": true
+      },
+      "updatedAt": {
+        "type": "string",
+        "format": "date-time",
+        "description": "Day in which the group was updated",
+        "readOnly": true
+      }
+    }
+  },
+  "User": {
+    "properties": {
+      "id": {
+        "type": "integer",
+        "format": "int32",
+        "description": "Id of the invoice pending"
+      },
+      "name": {
+        "type": "string"
+      },
+      "invoicingId": {
+        "type": "number",
+        "description": "Invoicing id that is unique per user"
+      }
+    }
+  }
+}
