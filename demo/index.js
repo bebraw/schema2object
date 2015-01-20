@@ -25,6 +25,7 @@ function main() {
 }
 
 function getObject(definitions, name) {
+    var fieldGenerators = getFieldGenerators();
     var definition = definitions[name];
     var properties = definition.properties;
 
@@ -36,13 +37,22 @@ function getObject(definitions, name) {
         properties = schema2object.getRequiredProperties(definition);
     }
 
-    return schema2object.properties2object(generators, properties, definitions);
+    return schema2object.properties2object({
+        generators: generators,
+        fieldGenerators: fieldGenerators,
+        properties: properties,
+        definitions: definitions
+    });
 }
 
 function patchGenerators(generators) {
     generators.integer = generators.integer.bind(null, 0, 1000);
     generators.number = generators.number.bind(null, 0, 1000);
     generators.string = generators.string.bind(null, 20);
+}
+
+function getFieldGenerators() {
+    var generators = {};
 
     generators.description = function() {
         return 'Description goes here...';
@@ -54,4 +64,6 @@ function patchGenerators(generators) {
 
         return math.pick(forenames) + ' ' + math.pick(surnames);
     };
+
+    return generators;
 }

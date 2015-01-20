@@ -18,7 +18,12 @@ exports.getRequiredProperties = function(definition) {
 };
 
 exports.properties2object = properties2object;
-function properties2object(generators, properties, definitions) {
+function properties2object(o) {
+    var generators = o.generators || {};
+    var fieldGenerators = o.fieldGenerators || {};
+    var properties = o.properties;
+    var definitions = o.definitions;
+
     if(!properties) {
         return console.trace('missing properties');
     }
@@ -39,7 +44,12 @@ function properties2object(generators, properties, definitions) {
 
                 if(def) {
                     generator = function() {
-                        return properties2object(generators, def.properties, definitions);
+                        return properties2object({
+                            generators: generators,
+                            fieldGenerators: fieldGenerators,
+                            properties: def.properties,
+                            definitions: definitions
+                        });
                     };
                 }
 
@@ -50,8 +60,8 @@ function properties2object(generators, properties, definitions) {
                 return generators[camelCase(v.format)]();
             }
 
-            if(generators[k]) {
-                return generators[k]();
+            if(fieldGenerators[k]) {
+                return fieldGenerators[k]();
             }
 
             return generators[v.type]();
