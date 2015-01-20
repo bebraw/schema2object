@@ -2,7 +2,6 @@
 
 var camelCase = require('change-case').camelCase;
 var fp = require('annofp');
-var generate = require('annogenerate');
 var math = require('annomath');
 
 
@@ -19,7 +18,7 @@ exports.getRequiredProperties = function(definition) {
 };
 
 exports.properties2object = properties2object;
-function properties2object(properties, definitions) {
+function properties2object(generators, properties, definitions) {
     if(!properties) {
         return console.trace('missing properties');
     }
@@ -40,18 +39,18 @@ function properties2object(properties, definitions) {
 
                 if(def) {
                     generator = function() {
-                        return properties2object(definitions, def.properties);
+                        return properties2object(generators, definitions, def.properties);
                     };
                 }
 
-                return generate.array([v.minItems, v.maxItems], generator);
+                return generators.array([v.minItems, v.maxItems], generator);
             }
 
             if(v.type === 'string' && v.format) {
-                return generate[camelCase(v.format)]();
+                return generators[camelCase(v.format)]();
             }
 
-            return generate[v.type]();
+            return generators[v.type]();
         }
 
         console.warn('missing enum or type for', v);

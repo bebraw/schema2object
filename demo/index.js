@@ -1,5 +1,7 @@
 'use strict';
 
+var generators = require('annogenerate');
+
 var schema2object = require('../');
 var definitions = require('./definitions');
 
@@ -28,5 +30,5 @@ function getObject(definitions, name) {
         properties = schema2object.getRequiredProperties(definition);
     }
 
-    return schema2object.properties2object(properties, definitions);
+    return schema2object.properties2object(generators, properties, definitions);
 }

@@ -4,6 +4,11 @@
 Usage:
 
 ```javascript
+// it is possible to replace generators with something else
+// just implement {<json schema property> -> fn} where fn should return
+// a generated value
+var generators = require('annogenerate');
+
 var schema2object = require('schema2object');
 var definitions = ...; // Object of JSON schemas (name -> schema)
 var definition = ...; // JSON Schema
@@ -18,7 +23,7 @@ if(definition.required) {
 
 // definitions can be passed so that $ref lookups work
 // in case your properties don't have any, you can skip it
-var o = schema2object.properties2object(properties, definitions);
+var o = schema2object.properties2object(generators, properties, definitions);
 
 // you should have an object with random data now
 console.log(o);

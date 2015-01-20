@@ -5,11 +5,12 @@
   "version": "0.2.0",
   "dependencies": {
     "annofp": "^0.3.0",
-    "annogenerate": "^0.8.0",
     "annomath": "^0.3.3",
     "change-case": "^2.2.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "annogenerate": "^0.8.0"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/bebraw/schema2object.git"
