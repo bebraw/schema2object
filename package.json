@@ -6,7 +6,7 @@
   "dependencies": {
     "annofp": "^0.3.0",
     "annomath": "^0.3.3",
-    "change-case": "^2.2.0"
+    "camel-case": "^1.1.1"
   },
   "devDependencies": {
     "annogenerate": "^0.8.0",

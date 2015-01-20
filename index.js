@@ -1,6 +1,6 @@
 'use strict';
 
-var camelCase = require('change-case').camelCase;
+var camelCase = require('camel-case');
 var fp = require('annofp');
 var math = require('annomath');
 
