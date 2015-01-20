@@ -39,7 +39,7 @@ function properties2object(generators, properties, definitions) {
 
                 if(def) {
                     generator = function() {
-                        return properties2object(generators, definitions, def.properties);
+                        return properties2object(generators, def.properties, definitions);
                     };
                 }
 

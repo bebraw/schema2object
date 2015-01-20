@@ -345,7 +345,7 @@
       "id": {
         "type": "integer",
         "format": "int32",
-        "description": "Id of the invoice pending"
+        "description": "Id of the user"
       },
       "name": {
         "type": "string"
