@@ -4,13 +4,13 @@
   "author": "Juho Vepsalainen <bebraw@gmail.com>",
   "version": "0.3.3",
   "dependencies": {
-    "annofp": "^0.3.0",
-    "annomath": "^0.3.3",
+    "annofp": "^0.4.1",
+    "annomath": "^0.4.1",
     "camel-case": "^1.1.1"
   },
   "devDependencies": {
-    "annogenerate": "^0.8.0",
-    "annomath": "^0.3.3",
+    "annogenerate": "^0.8.1",
+    "annomath": "^0.4.1",
     "seed-random": "^2.2.0"
   },
   "repository": {
