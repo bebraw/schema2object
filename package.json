@@ -2,7 +2,7 @@
   "name": "schema2object",
   "description": "Generate random objects based on JSON Schema",
   "author": "Juho Vepsalainen <bebraw@gmail.com>",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "dependencies": {
     "annofp": "^0.3.0",
     "annomath": "^0.3.3",
