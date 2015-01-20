@@ -43,4 +43,15 @@ function patchGenerators(generators) {
     generators.integer = generators.integer.bind(null, 0, 1000);
     generators.number = generators.number.bind(null, 0, 1000);
     generators.string = generators.string.bind(null, 20);
+
+    generators.description = function() {
+        return 'Description goes here...';
+    };
+
+    generators.name = function() {
+        var forenames = ['Jack', 'Joe', 'Jill', 'Dan', 'Mack', 'Mike', 'Don', 'Grace'];
+        var surnames = ['Johnson', 'Dill', 'Tully', 'Robertson', 'Hill', 'Yellow'];
+
+        return math.pick(forenames) + ' ' + math.pick(surnames);
+    };
 }

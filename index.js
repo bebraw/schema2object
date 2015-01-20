@@ -50,6 +50,10 @@ function properties2object(generators, properties, definitions) {
                 return generators[camelCase(v.format)]();
             }
 
+            if(generators[k]) {
+                return generators[k]();
+            }
+
             return generators[v.type]();
         }
 
