@@ -9,7 +9,9 @@
     "change-case": "^2.2.0"
   },
   "devDependencies": {
-    "annogenerate": "^0.8.0"
+    "annogenerate": "^0.8.0",
+    "annomath": "^0.3.3",
+    "seed-random": "^2.2.0"
   },
   "repository": {
     "type": "git",

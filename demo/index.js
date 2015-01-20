@@ -1,6 +1,12 @@
 'use strict';
 
-var generators = require('annogenerate');
+var math = require('annomath');
+var random = require('seed-random')('baz');
+
+var generators = require('annogenerate')(function(min, max) {
+    return math.randint(min, max, random);
+});
+patchGenerators(generators);
 
 var schema2object = require('../');
 var definitions = require('./definitions');
@@ -31,4 +37,10 @@ function getObject(definitions, name) {
     }
 
     return schema2object.properties2object(generators, properties, definitions);
+}
+
+function patchGenerators(generators) {
+    generators.integer = generators.integer.bind(null, 0, 1000);
+    generators.number = generators.number.bind(null, 0, 1000);
+    generators.string = generators.string.bind(null, 20);
 }
